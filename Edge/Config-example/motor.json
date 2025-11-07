@@ -1,0 +1,10 @@
+{
+  "realTimeDatabase": false,
+  "interval": 1,
+  "addresses": [
+    {
+      "name": "ServerStatus",
+      "address": "ns=2;i=2"
+    }
+  ]
+}

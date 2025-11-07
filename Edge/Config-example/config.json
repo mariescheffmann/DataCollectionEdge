@@ -1,0 +1,3 @@
+{
+  "configs": ["machine.json", "motor.json"]
+}

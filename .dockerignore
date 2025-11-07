@@ -1,0 +1,13 @@
+Dockerfile
+.dockerignore
+.git
+
+#Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pdb
+*.egg-info
+*.eggs
+*.log

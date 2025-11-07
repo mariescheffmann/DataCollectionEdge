@@ -1,33 +1,14 @@
-from opcua import Client
-from dotenv import load_dotenv
-import os
-import time
+from OpcUaClient import OpcUaClient
+import json
+import threading
 
+with open("Config/config.json", "r", encoding="utf-8") as f:
+    configData = json.load(f)
 
-load_dotenv()
-url = os.getenv("OPC_UA_URL")
-if not url:
-    raise ValueError("OPC_UA_URL is not set in .env")
+for filename in configData["configs"]:
+    with open("Config/"+filename, "r", encoding="utf-8") as fi:
+        data = json.load(fi)
 
-client = Client(url)
-
-variables = {
-    "ServerStatus": "ns=2;i=2",
-    "CurrentTime": "ns=2;i=3",
-}
-
-try:
-    client.connect()
-    print("Connected to server")
-
-    while True:
-        for name, node_id in variables.items():
-            node = client.get_node(node_id)
-            value = node.get_value()
-            print(f"{name}: {value}")
-        time.sleep(1)
-
-except KeyboardInterrupt:
-    print("Client stopped by user")
-finally:
-    client.disconnect()
+        opcua = OpcUaClient(data["realTimeDatabase"], data["interval"], data["addresses"])
+        t = threading.Thread(target=opcua.start)
+        t.start()
