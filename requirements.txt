@@ -1,3 +1,4 @@
 opcua
 cryptography
 python-dotenv
+paho-mqtt
