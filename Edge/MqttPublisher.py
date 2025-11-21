@@ -7,8 +7,8 @@ class MqttPublisher:
         self.client = mqtt.Client(client_id=os.getenv("CLIENT_ID"))
         self.client.tls_set(
             ca_certs="/Edge/certs/ca.crt",
-            certfile="/Edge/certs/client.crt",
-            keyfile="/Edge/certs/client.key",
+            certfile="/Edge/certs/edge-client.crt",
+            keyfile="/Edge/certs/edge-client.key",
             tls_version=ssl.PROTOCOL_TLSv1_2
         )
         self.client.tls_insecure_set(True)
