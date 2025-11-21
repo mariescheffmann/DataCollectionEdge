@@ -10,6 +10,7 @@ WORKDIR /Edge
 COPY requirements.txt .
 COPY .env .env
 COPY Edge /Edge
+COPY certs /Edge/certs
 
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
