@@ -2,6 +2,8 @@ from OpcUaClient import OpcUaClient
 import json
 import threading
 
+print('Hello World!')
+
 with open("Config/config.json", "r", encoding="utf-8") as f:
     configData = json.load(f)
 
