@@ -15,8 +15,7 @@ class MqttPublisher:
 
         self.client.connect(os.getenv("BROKER"), int(os.getenv("PORT")), 60)
 
-    def publish(self, message, topic_start, topic_suffix):
+    def publish(self, message, topic_prefix, topic_suffix):
         client_id = os.getenv("CLIENT_ID")
-        topic = f"{topic_start}/{client_id}/{topic_suffix}"
+        topic = f"{topic_prefix}/{client_id}/{topic_suffix}"
         self.client.publish(topic, message)
-        print(message, topic)
