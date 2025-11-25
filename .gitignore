@@ -1,2 +1,4 @@
 .env
 /Edge/Config
+/Edge/certs
+/Edge/__pycache__
