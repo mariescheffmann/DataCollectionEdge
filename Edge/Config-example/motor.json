@@ -1,10 +1,29 @@
 {
-  "realTimeDatabase": false,
   "interval": 1,
   "addresses": [
     {
-      "name": "ServerStatus",
-      "address": "ns=2;i=2"
+      "name": "axisPosition",
+      "address": "xx"
+    },
+    {
+      "name": "velocity",
+      "address": "xx"
+    },
+    {
+      "name": "power",
+      "address": "xx"
+    },
+    {
+      "name": "stateCurrent",
+      "address": "xx"
+    },
+    {
+      "name": "error",
+      "address": "xx"
+    },
+    {
+      "name": "active",
+      "address": "xx"
     }
   ]
 }

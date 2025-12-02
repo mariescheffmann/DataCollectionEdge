@@ -1,14 +1,34 @@
 {
-  "realTimeDatabase": true,
   "interval": 5,
   "addresses": [
     {
-      "name": "ServerStatus",
-      "address": "ns=2;i=2"
+      "name": "machineType",
+      "address": "xx"
     },
     {
-      "name": "CurrentTime",
-      "address": "ns=2;i=3"
+      "tag": "items",
+      "name": "rejectItems",
+      "address": "xx"
+    },
+    {
+      "name": "machineState",
+      "address": "xx"
+    },
+    {
+      "name": "ip",
+      "address": "xx"
+    },
+    {
+      "name": "totalCounter",
+      "address": "xx"
+    },
+    {
+      "name": "goodItems",
+      "address": "xx"
+    },
+    {
+      "name": "airPressureOn",
+      "address": "xx"
     }
   ]
 }
