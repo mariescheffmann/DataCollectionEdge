@@ -4,7 +4,7 @@ from datetime import datetime
 
 handler = Handler()
 
-class Data:
+class RealTimeData:
     def __init__(self, name, value, realTimeDatabase, timestamp=None, tag=None):
         self.name = name
         self.value = value
@@ -32,7 +32,7 @@ class Data:
             data["tag"] = self.tag
         return data
 
-class EventPayload:
+class AnalyticsData:
     def __init__(self, machine_id, event_name, opcua_value, template_config, timestamp=None):
         self.machine_id = machine_id
         self.event_name = event_name
