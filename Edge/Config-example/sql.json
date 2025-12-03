@@ -1,0 +1,66 @@
+{
+  "machineId": 1,
+  "events": [
+    {
+      "event_name": "MachineStateChange",
+      "opcua_addresses": [
+        {"name": "stateValue", "address": "xx"}
+      ],
+      "sql_config": {
+        "action": "INSERT",
+        "target_table": "machine_state_relation",
+        "mapping": [
+          {"source": "stateValue", "target_column": "state_id", "lookup_table": "states"},
+          {"source": "opcua_source_id", "target_column": "machine_id"},
+          {"source": "timestamp", "target_column": "start_time"}
+        ]
+      }
+    },
+    {
+      "event_name": "OperatorChange",
+      "opcua_addresses": [
+        {"name": "operatorName", "address": "xx"}
+      ],
+      "sql_config": {
+        "action": "INSERT",
+        "target_table": "operator_machine_relation",
+        "mapping": [
+          {"source": "operatorName", "target_column": "operator_id", "lookup_table": "operators"},
+          {"source": "opcua_source_id", "target_column": "machine_id"},
+          {"source": "timestamp", "target_column": "start_time"}
+        ]
+      }
+    },
+    {
+      "event_name": "NewAlarm",
+      "opcua_addresses": [
+        {"name": "alarmMessage", "address": "xx"},
+        {"name": "alarmCode", "address": "xx"}
+      ],
+      "sql_config": {
+        "action": "INSERT",
+        "target_table": "alarms",
+        "mapping": [
+          {"source": "alarmMessage", "target_column": "description"},
+          {"source": "alarmCode", "target_column": "error_code"},
+          {"source": "opcua_source_id", "target_column": "machine_id"},
+          {"source": "timestamp", "target_column": "created_on"}
+        ]
+      }
+    },
+    {
+      "event_name": "BatchStartEnd",
+      "opcua_addresses": [
+        {"name": "batchID", "address": "xx"}
+      ],
+      "sql_config": {
+        "action": "INSERT",
+        "target_table": "recipes",
+        "mapping": [
+          {"source": "batchID", "target_column": "recipe_name", "lookup_table": "None"},
+          {"source": "opcua_source_id", "target_column": "machine_id"}
+        ]
+      }
+    }
+  ]
+}

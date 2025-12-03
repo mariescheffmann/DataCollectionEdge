@@ -1,4 +1,4 @@
-from Data import Data
+from Data import RealTimeData
 from opcua import Client, ua
 from dotenv import load_dotenv
 import os
@@ -43,7 +43,7 @@ class OpcUaClient:
                     except ua.UaStatusCodeError as e:
                         print(f"Node {node} does not exist: {e}")
 
-                    data = Data(node_name, value, self.realTimeDatabase, timestamp=source_timestamp, tag=tag)
+                    data = RealTimeData(node_name, value, self.realTimeDatabase, timestamp=source_timestamp, tag=tag)
                     data.prepareData()
                 time.sleep(self.interval)
 
