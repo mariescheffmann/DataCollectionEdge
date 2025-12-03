@@ -1,3 +1,4 @@
 {
-  "configs": ["machine.json", "motor.json"]
+  "realtimeConfigs": ["machine.json", "motor.json"],
+  "sqlConfigs": ["sql.json"]
 }
