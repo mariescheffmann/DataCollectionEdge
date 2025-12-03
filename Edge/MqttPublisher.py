@@ -1,9 +1,11 @@
 import paho.mqtt.client as mqtt
 import os
 import ssl
+from dotenv import load_dotenv
 
 class MqttPublisher:
     def __init__(self):
+        load_dotenv()
         self.client = mqtt.Client(client_id=os.getenv("CLIENT_ID"))
         self.client.tls_set(
             ca_certs="certs/ca.crt",

@@ -14,3 +14,37 @@ for filename in configData["configs"]:
         opcua = OpcUaClient(data["realTimeDatabase"], data["interval"], data["addresses"])
         t = threading.Thread(target=opcua.start)
         t.start()
+
+# from MqttPublisher import MqttPublisher
+# import random
+# import time
+# import json
+
+# try:
+#     mqtt = MqttPublisher()
+#     while True:
+#         temperatur = round(random.uniform(20.0, 25.0), 2)
+#         humidity = round(random.uniform(40.0, 60.0), 2)
+
+#         # JSON i DataPoint-format
+#         temp_data = {
+#             "tag": "fisk",
+#             "name": "temperature",
+#             "value": temperatur
+#         }
+
+#         humidity_data = {
+#             "tag": "hej",
+#             "name": "humidity",
+#             "value": humidity,
+#             "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+#         }
+
+#         # Send til MQTT
+#         mqtt.publish(json.dumps(temp_data), "data", "influx")
+#         mqtt.publish(json.dumps(humidity_data), "data", "influx")
+
+#         time.sleep(5)
+# except KeyboardInterrupt:
+#     print("Stopper publisher...")
+#     client.disconnect()
