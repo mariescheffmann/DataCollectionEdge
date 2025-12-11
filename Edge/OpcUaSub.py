@@ -3,7 +3,7 @@ import time
 import os
 import json
 from dotenv import load_dotenv
-from Data import EventPayload
+from Data import AnalyticsData
 from datetime import datetime
 
 class SubscriptionHandler(object):
@@ -25,14 +25,14 @@ class SubscriptionHandler(object):
             print(f"No sql_config found for address {opcua_address}")
             return
 
-        eventPayload = EventPayload(
+        analyticsData = AnalyticsData(
             self.machine_id,
             event_match["event_name"],
             val,
             sql_config,
             data.monitored_item.Value.SourceTimestamp
         )
-        eventPayload.sendData()
+        analyticsData.sendData()
 
 
 class OpcUaSub:
@@ -54,7 +54,7 @@ class OpcUaSub:
     def start(self):
         try:
             self.client.connect()
-            print(f"--- SQL Subscriptions Startet for Maskine ID: {self.machine_id} ---")
+            print(f"--- SQL Subscriptions Started for Maskine ID: {self.machine_id} ---")
 
             handler = SubscriptionHandler(self.machine_id, self.event_templates)
             sub = self.client.create_subscription(500, handler)
@@ -68,7 +68,7 @@ class OpcUaSub:
                 time.sleep(1)
 
         except KeyboardInterrupt:
-            print(f"Subscription client for {self.machine_id} stoppet af bruger.")
+            print(f"Subscription client for {self.machine_id} stopped by user.")
         except Exception as e:
             print(f"Error i OpcUaSub for {self.machine_id}: {e}")
         finally:
